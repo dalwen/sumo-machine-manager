@@ -17,7 +17,7 @@ use crate::ivshmem::{self, HostProcess, IvshmemSockets};
 // NIC up but unusable.  Keep the control virtqueue enabled: QNX needs it for
 // the driver to start correctly.
 const QNX_X86_VIRTIO_NET_FEATURES: &str =
-    ",event_idx=off,mrg_rxbuf=off,indirect_desc=off,rx_queue_size=1024";
+    ",event_idx=off,mrg_rxbuf=off,indirect_desc=off,rx_queue_size=1024,ctrl_rx=off,ctrl_rx_extra=off,ctrl_vlan=off,ctrl_mac_addr=off,ctrl_guest_offloads=off";
 
 fn virtio_net_compat_features(os_type: OsType, arch: Arch) -> &'static str {
     if matches!(os_type, OsType::Qnx) && matches!(arch, Arch::X86_64) {
